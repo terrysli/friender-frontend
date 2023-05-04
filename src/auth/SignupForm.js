@@ -57,6 +57,36 @@ function SignupForm({ signup }) {
     }));
   }
 
+  // function handleFiles(evt) {
+  //   const fileList = this.files;
+  //   const photoFile = fileList[0];
+  // }
+
+  // function uploadFile(img, file) {
+
+  // }
+
+  const uploadFile = async (e) => {
+    const file = e.target.files[0];
+    if (file != null) {
+      const data = new FormData();
+      data.append('file_from_react', file);
+
+      let response = await fetch('http://127.0.0.1:5000/url_route',
+        {
+          method: 'post',
+          body: data,
+          mode:'no-cors'
+        }
+      );
+      let res = await response.json();
+      console.debug("res", res);
+      if (res.status !== 1) {
+        alert('Error uploading file');
+      }
+    }
+  };
+
   return (
     <div className="SignupForm">
       <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
@@ -99,7 +129,7 @@ function SignupForm({ signup }) {
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="bio-input"className="form-label">Bio</label>
+                <label htmlFor="bio-input" className="form-label">Bio</label>
                 <input
                   id="bio-input"
                   name="lastName"
@@ -132,13 +162,14 @@ function SignupForm({ signup }) {
                 />
               </div>
               <div className="mb-3">
-                <label htmlForm="photo-input" className="form-label">Choose a profile picture:</label>
+                <label htmlFor="photo-input" className="form-label">Choose a profile picture:</label>
                 <input
                   id="photo-input"
                   type="file"
                   name="photo"
                   accept="image/png, image/jpeg"
                   className="form-control"
+                  onChange={uploadFile}
                 />
               </div>
 
