@@ -8,12 +8,12 @@ import UserContext from "../auth/UserContext";
  * Props:
  *
  * State:
+ *  - currentUser
  */
 
 function Homepage() {
   const { currentUser } = useContext(UserContext);
   console.debug("Homepage", "currentUser=", currentUser);
-
 
   return (
     <main className="Homepage">
