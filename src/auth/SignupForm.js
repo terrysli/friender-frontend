@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Alert from "../common/Alert";
-import "./SignupForm.css";
 import { useNavigate } from "react-router-dom";
 
 /** Signup form.
@@ -11,7 +9,7 @@ import { useNavigate } from "react-router-dom";
  *  - signup(): calls function in parent
  *
  * State:
- *  - formData: {username, password, email, bio, location, friendRadius}
+ *  - formData: {username, password, email, bio, location, friendRadius, photo}
  *
  * RoutesList -> SignupForm -> Alert
  */
@@ -19,12 +17,13 @@ import { useNavigate } from "react-router-dom";
 function SignupForm({ signup }) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-    email: "",
-    bio: "",
-    location: "",
-    friendRadius: ""
+    username: "testuser1",
+    password: "password",
+    email: "test@mail.com",
+    bio: "I am a test user.",
+    location: "94114",
+    friendRadius: "10",
+    photo: ""
   });
   const [formErrors, setFormErrors] = useState([]);
 
@@ -66,8 +65,9 @@ function SignupForm({ signup }) {
           <div className="card-body">
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
-                <label className="form-label">Username</label>
+                <label htmlFor="username-input" className="form-label">Username</label>
                 <input
+                  id="username-input"
                   name="username"
                   className="form-control"
                   value={formData.username}
@@ -75,19 +75,22 @@ function SignupForm({ signup }) {
                 />
               </div>
               <div className="mb-3">
-                <label className="form-label">Password</label>
+                <label htmlFor="password-input" className="form-label">Password</label>
                 <input
+                  id="password-input"
                   type="password"
                   name="password"
                   className="form-control"
+                  placeholder="Pick a unique username"
                   value={formData.password}
                   onChange={handleChange}
                 />
               </div>
 
               <div className="mb-3">
-                <label className="form-label">Email</label>
+                <label htmlFor="email-input" className="form-label">Email</label>
                 <input
+                  id="email-input"
                   type="email"
                   name="email"
                   className="form-control"
@@ -96,18 +99,20 @@ function SignupForm({ signup }) {
                 />
               </div>
               <div className="mb-3">
-                <label className="form-label">Bio</label>
+                <label htmlFor="bio-input"className="form-label">Bio</label>
                 <input
+                  id="bio-input"
                   name="lastName"
                   className="form-control"
-                  placeholder="Describe yourself, your hobbies and interests"
+                  placeholder="Describe yourself"
                   value={formData.bio}
                   onChange={handleChange}
                 />
               </div>
               <div className="mb-3">
-                <label className="form-label">Location</label>
+                <label htmlFor="location-input" className="form-label">Location</label>
                 <input
+                  id="location-input"
                   name="location"
                   className="form-control"
                   placeholder="Enter ZIP code"
@@ -116,20 +121,26 @@ function SignupForm({ signup }) {
                 />
               </div>
               <div className="mb-3">
-                <label className="form-label">Friend Radius</label>
+                <label htmlFor="friend-radius-input" className="form-label">Friend Radius</label>
                 <input
-                  name="location"
+                  input="friend-radius-input"
+                  name="friend-radius"
                   className="form-control"
                   placeholder="Enter number of miles"
                   value={formData.friendRadius}
                   onChange={handleChange}
                 />
               </div>
-
-              {formErrors.length
-                ? <Alert type="danger" messages={formErrors} />
-                : null
-              }
+              <div className="mb-3">
+                <label htmlForm="photo-input" className="form-label">Choose a profile picture:</label>
+                <input
+                  id="photo-input"
+                  type="file"
+                  name="photo"
+                  accept="image/png, image/jpeg"
+                  className="form-control"
+                />
+              </div>
 
               <div className="d-grid">
                 <button className="btn btn-primary" onClick={handleSubmit}>

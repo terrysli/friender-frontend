@@ -18,13 +18,23 @@ function NavBar() {
     return (
       <ul className="navbar-nav ms-auto">
         <li className="nav-item me-4">
-          <NavLink className="nav-link" to="/profile">
+          <NavLink className="nav-link" to="/">
             Friender
           </NavLink>
         </li>
         <li className="nav-item me-4">
           <NavLink className="nav-link" to="/friends">
-            Jobs
+            Friends
+          </NavLink>
+        </li>
+        <li className="nav-item me-4">
+          <NavLink className="nav-link" to="/messages">
+            Messages
+          </NavLink>
+        </li>
+        <li className="nav-item me-4">
+          <NavLink className="nav-link" to="/profile">
+            Edit Profile
           </NavLink>
         </li>
         <li className="nav-item">

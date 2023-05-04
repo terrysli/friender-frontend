@@ -3,6 +3,9 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Homepage from "../main/Homepage";
 import SignupForm from "../auth/SignupForm";
 import LoginForm from "../auth/LoginForm";
+import FriendList from "../friends/FriendList";
+import ProfileForm from "../main/ProfileForm";
+import MessageList from "../main/MessageList";
 
 /**
  * Site-wide routes.
