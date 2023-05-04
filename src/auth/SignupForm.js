@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 /** Signup form.
  *
@@ -42,6 +43,11 @@ function SignupForm({ signup }) {
     evt.preventDefault();
     try {
       await signup(formData);
+      const photoInput = document.getElementById("photo-input");
+
+      console.debug("photoInput:", photoInput);
+      const file = photoInput.files[0];
+      await uploadFile(file);
       navigate("/");
     } catch (err) {
       setFormErrors(err);
@@ -57,6 +63,10 @@ function SignupForm({ signup }) {
     }));
   }
 
+  function handlePhotoChange(evt) {
+
+  }
+
   // function handleFiles(evt) {
   //   const fileList = this.files;
   //   const photoFile = fileList[0];
@@ -66,8 +76,8 @@ function SignupForm({ signup }) {
 
   // }
 
-  const uploadFile = async (e) => {
-    const file = e.target.files[0];
+  const uploadFile = async (file) => {
+    console.log("uploadFile file:", file);
     if (file != null) {
       const data = new FormData();
       data.append('file_from_react', file);
@@ -169,7 +179,6 @@ function SignupForm({ signup }) {
                   name="photo"
                   accept="image/png, image/jpeg"
                   className="form-control"
-                  onChange={uploadFile}
                 />
               </div>
 
