@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Alert from "../common/Alert";
 import { useNavigate } from "react-router-dom";
 
 /**
@@ -14,7 +13,7 @@ import { useNavigate } from "react-router-dom";
  *  - formData: {username, password}
  *  - formErrors: ["error msg", ...]
  *
- * RoutesList -> LoginForm -> Alert
+ * RoutesList -> LoginForm
  */
 
 function LoginForm({ login }) {
@@ -86,10 +85,6 @@ function LoginForm({ login }) {
                   required
                 />
               </div>
-
-              {/* {formErrors.length > 0 &&
-                <Alert type="danger" messages={formErrors} />
-              } */}
 
               <div className="d-grid">
                 <button className="btn btn-primary" onClick={handleSubmit}>

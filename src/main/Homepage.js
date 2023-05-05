@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../auth/UserContext";
 import FriendList from "../friends/FriendList";
+import FrienderApi from "../api";
 
 /**
  * Homepage for Friender site
@@ -12,9 +13,9 @@ import FriendList from "../friends/FriendList";
  *  - currentUser
  */
 
-function Homepage() {
-  const { currentUser } = useContext(UserContext);
-  console.debug("Homepage", "currentUser=", currentUser);
+function Homepage({ currentUser, friends }) {
+  //const { currentUser } = useContext(UserContext);
+  console.debug("Homepage", "currentUser=", currentUser, friends);
 
   return (
     <main className="Homepage">
@@ -24,6 +25,7 @@ function Homepage() {
             <h3 className="mb-3">My Profile</h3>
             <br />
             <ul>
+              <li><img src="https://friender-rithm-terrysli.s3.us-east-2.amazonaws.com/profile_photos/jdawg_photo.jpeg" alt="profile pic"/></li>
               <li><b>Username: </b>{currentUser.username}</li>
               <li><b>Email: </b>{currentUser.email}</li>
               <li><b>Bio: </b>{currentUser.bio}</li>

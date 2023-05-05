@@ -1,9 +1,10 @@
 import './App.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from './routes-nav/NavBar';
 import SignupForm from "./auth/SignupForm";
 import FriendsList from "./friends/FriendList";
 import MessageList from "./messages/MessageList";
+import RoutesList from './routes-nav/RoutesList';
 import FrienderApi from "./api";
 
 /**
@@ -19,10 +20,16 @@ import FrienderApi from "./api";
  */
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({
-    data: null,
-    dataLoaded: false
-  });
+  const JDAWG = {
+    bio: "After environmental let stuff floor total member.",
+		email: "j@j.com",
+	  friend_radius: 10,
+		location: 48197,
+		photo: null,
+		username: "jdawg"
+  }
+  const [currentUser, setCurrentUser] = useState(JDAWG);
+  const [friends, setFriends] = useState([]);
   const [token, setToken] = useState("");
 
   console.debug(
@@ -32,6 +39,15 @@ function App() {
     "token=",
     token
   );
+
+  useEffect(function getFriendsOnMount() {
+    async function getFriends() {
+      const friendsResults = await FrienderApi.getFriendsOfUser("jdawg");
+      console.log("friendsResults:", friendsResults);
+      setFriends(friendsResults);
+    }
+    getFriends();
+  }, [])
 
   /** Handles side-wide signup. */
   async function signup(signupData) {
@@ -47,19 +63,19 @@ function App() {
     setToken(token);
   }
 
-    /** Handles site-wide logout */
-    function logout() {
-      setCurrentUser({
-        infoLoaded: true,
-        data: null
-      });
-      setToken(null);
-    }
+  /** Handles site-wide logout */
+  function logout() {
+    setCurrentUser({
+      infoLoaded: true,
+      data: null
+    });
+    setToken(null);
+  }
 
   return (
     <div className="App">
-      <NavBar logout={logout}/>
-      <MessageList />
+      <NavBar logout={logout} />
+      <RoutesList signup={signup} login={login} currentUser={JDAWG} friends={friends} />
     </div>
   );
 }

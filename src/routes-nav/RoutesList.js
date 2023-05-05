@@ -4,8 +4,8 @@ import Homepage from "../main/Homepage";
 import SignupForm from "../auth/SignupForm";
 import LoginForm from "../auth/LoginForm";
 import FriendList from "../friends/FriendList";
-import ProfileForm from "../main/ProfileForm";
-import MessageList from "../main/MessageList";
+import ProfileForm from "../profile/ProfileForm";
+import MessageList from "../messages/MessageList";
 
 /**
  * Site-wide routes.
@@ -21,7 +21,7 @@ import MessageList from "../main/MessageList";
  *  [LoginForm, SignupForm, Homepage, FriendList, MessageList, ProfileForm]
  */
 
-function RoutesList(login, signup, currentUser) {
+function RoutesList({ login, signup, currentUser, friends }) {
 
   console.debug(
     "Routes",
@@ -38,13 +38,14 @@ function RoutesList(login, signup, currentUser) {
           </>
         }
 
-        <Route path="/" element={<Homepage />} />
+        <Route path="/" element={<Homepage currentUser={currentUser} friends={friends}/>} />
 
         {currentUser &&
           <>
-            <Route path="/friends" element={<FriendList />} />
+            <Route path="/friends" element={<FriendList friends={friends}/>} />
             <Route path="/messages" element={<MessageList />} />
             <Route path="/profile" element={<ProfileForm />} />
+            <Route path="/signup" element={<SignupForm />} />
           </>
         }
 

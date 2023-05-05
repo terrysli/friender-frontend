@@ -19,8 +19,8 @@ function FriendCard({ username, email, bio, photo, location }) {
     <div className="FriendCard card">
       {" "}
       <div className="card-body">
-        <h2 className="card-title">{username}</h2>
-        <img src={photo} width="300px" alt={username} />
+        <h4 className="card-title">{username}</h4>
+        <img src={photo} width="300px" />
         <p>Email: {email}</p>
         <p>Bio: {bio}</p>
         <p>Location: {location}</p>

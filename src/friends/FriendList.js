@@ -12,18 +12,9 @@ import FriendCard from "../friends/FriendCard";
  * [RoutesList, NavBar] -> FriendList -> FriendCard
  */
 
-function FriendList() {
-  const [friends, setFriends] = useState([]);
-  console.debug("FriendList", friends);
+function FriendList({ friends }) {
 
-  useEffect(function getFriendsOnMount() {
-    async function getFriends() {
-      const friendsResults = await FrienderApi.getFriendsOfUser("jdawg");
-      console.log("friendsResults:", friendsResults);
-      setFriends(friendsResults);
-    }
-    getFriends();
-  }, [])
+  console.debug("FriendList", friends);
 
   return (
     <div className="FriendList col-md-8 offset-md-2">
