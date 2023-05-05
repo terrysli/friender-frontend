@@ -21,8 +21,9 @@ function ProfileForm({ currentUser }) {
     try {
       const photoInput = document.getElementById("photo-input");
       const file = photoInput.files[0];
-      await uploadFile(file, currentUser.username);
+      uploadFile(file, currentUser.username);
       navigate("/");
+      console.log("PROFILE FORM AFTER NAVIGATE")
     } catch (err) {
       setFormErrors(err);
     }
@@ -57,6 +58,7 @@ function ProfileForm({ currentUser }) {
         alert('Error uploading file');
       }
     }
+    return
   };
 
   return (

@@ -13,6 +13,9 @@ import FrienderApi from "../api";
  *  - currentUser
  */
 
+// const BUCKET_URL = "https://friender-rithm-terrysli.s3.us-east-2.amazonaws.com"
+const BUCKET_URL = "https://friender-may-2023.s3.us-east-2.amazonaws.com"
+
 function Homepage({ currentUser, friends }) {
   //const { currentUser } = useContext(UserContext);
   console.debug("Homepage", "currentUser=", currentUser, friends);
@@ -25,7 +28,7 @@ function Homepage({ currentUser, friends }) {
             <h3 className="mb-3">My Profile</h3>
             <br />
             <ul>
-              <li><img width="300px" src={`https://friender-rithm-terrysli.s3.us-east-2.amazonaws.com/profile_photos/${currentUser.username}_photo.jpeg`} alt="profile pic" /></li>
+              <li><img width="300px" src={`${BUCKET_URL}/profile_photos/${currentUser.username}_photo.jpeg`} alt="profile pic" /></li>
               <li><b>Username: </b>{currentUser.username}</li>
               <li><b>Email: </b>{currentUser.email}</li>
               <li><b>Bio: </b>{currentUser.bio}</li>
