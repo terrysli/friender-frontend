@@ -1,13 +1,14 @@
 .FriendCard {
-    max-height: 250px;
     margin-bottom: 1rem;
-    color: inherit;
+    background-color: lightblue;
+    color: black;
     text-decoration: none;
     border-radius: 0;
     border: none;
+    width: 400px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
 
   .FriendCard img {
-    width: 50px;
+    width: 300px;
   }

@@ -12,7 +12,7 @@ class FrienderApi {
 
   // TODO: This token expires after a few minutes! Must be refreshed for app to
   // work as logged in user
-  static token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4MzI2OTcyMSwianRpIjoiZmYzNjY5YzMtZjdjMy00YTE0LThmZTMtNmI5NzRhYzE4ZjZmIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImpkYXdnIiwibmJmIjoxNjgzMjY5NzIxLCJleHAiOjE2ODMyNzA2MjEsImlzX2FkbWluIjp0cnVlfQ.YHIaqxzYDuA-d7mxhH9Wz3nWQ1JsoxN18bRCzhEgXss";
+  static token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4MzMwMjQ5OSwianRpIjoiNDZjZDJjODktNmRhMy00OGYxLWI0NGEtOGRjZDA4YTVkODQwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImpkYXdnIiwibmJmIjoxNjgzMzAyNDk5LCJleHAiOjE2ODMzMDMzOTksImlzX2FkbWluIjp0cnVlfQ.EqiZpJ7X9wK3OKk3wtK0BTYCphbV4bv7fvHGpAct2UQ";
 
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);

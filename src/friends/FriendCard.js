@@ -20,7 +20,7 @@ function FriendCard({ username, email, bio, photo, location }) {
       {" "}
       <div className="card-body">
         <h4 className="card-title">{username}</h4>
-        <img src={photo} width="300px" />
+        <img src={`https://friender-rithm-terrysli.s3.us-east-2.amazonaws.com/profile_photos/${username}_photo.jpeg`} alt="profile pic" width="300px" />
         <p>Email: {email}</p>
         <p>Bio: {bio}</p>
         <p>Location: {location}</p>
