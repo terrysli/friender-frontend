@@ -3,6 +3,7 @@ import { useState } from "react";
 import NavBar from './routes-nav/NavBar';
 import SignupForm from "./auth/SignupForm";
 import FriendsList from "./friends/FriendList";
+import MessageList from "./messages/MessageList";
 import FrienderApi from "./api";
 
 /**
@@ -14,7 +15,7 @@ import FrienderApi from "./api";
  *  - currentUser
  *  - token
  *
- * App -> []
+ * App -> [NavBar, Homepage, LoginForm, SignupForm]
  */
 
 function App() {
@@ -36,8 +37,8 @@ function App() {
   async function signup(signupData) {
     // let token = await FrienderApi.signup(signupData);
     // setToken(token);
-    let user = await FrienderApi.createUser(signupData);
-    setCurrentUser(user);
+    // let user = await FrienderApi.createUser(signupData);
+    // setCurrentUser(user);
   }
 
   /** Handles side-wide login. */
@@ -57,9 +58,8 @@ function App() {
 
   return (
     <div className="App">
-      {/* <NavBar logout={logout}/> */}
-      {/* <SignupForm signup={signup}/> */}
-      <SignupForm signup={signup} />
+      <NavBar logout={logout}/>
+      <MessageList />
     </div>
   );
 }

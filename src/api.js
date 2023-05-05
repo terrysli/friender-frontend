@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://127.0.0.1:5000";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
 
 /** API Class.
  *
@@ -38,20 +38,24 @@ class FrienderApi {
     return res.user;
   }
 
-  static async getFriendsOfUser(username) {
-    let res = await this.request(`users/${username}/friends`);
-    console.log("API getFriends:", res);
-    return res.friends;
-  }
-
-  static async createUser({username, email, password, location, bio, friend_radius, photo }) {
-    let res = await this.request(
-      `users`,
-      {username, email, password, location, bio, friend_radius, photo},
-      "post"
-      );
+  /** Create new user and add to db */
+  static async createUser(data) {
+    console.log("createUser data=", data);
+    let res = await this.request(`users`, data, "post");
     return res.user;
   }
+
+    /** Get array of accepted friends of user */
+    static async getFriendsOfUser(username) {
+      let res = await this.request(`users/${username}/friends`);
+      return res.friends;
+    }
+
+    /** Get array of messages sent or received by user */
+    static async getMessagesOfUser(username) {
+      let res = await this.request(`users/${username}/messages`);
+      return res.messages;
+    }
 }
 
 export default FrienderApi;

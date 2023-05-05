@@ -1,0 +1,18 @@
+.Navigation {
+  background-color: white;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: black;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    display: inline-block;
+    padding: 10px;
+}

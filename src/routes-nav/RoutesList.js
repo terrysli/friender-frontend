@@ -21,7 +21,7 @@ import MessageList from "../main/MessageList";
  *  [LoginForm, SignupForm, Homepage, FriendList, MessageList, ProfileForm]
  */
 
-function RoutesList({ login, signup, currentUser }) {
+function RoutesList(login, signup, currentUser) {
 
   console.debug(
     "Routes",

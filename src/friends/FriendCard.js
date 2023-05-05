@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import UserContext from "../auth/UserContext";
+import "./FriendCard.css"
 
 /** Show limited information about a friend.
  *
@@ -12,9 +13,7 @@ import UserContext from "../auth/UserContext";
  */
 
 function FriendCard({ username, email, bio, photo, location }) {
-  console.debug("FriendCard");
-
-  console.debug("FriendCard, username=", username);
+  console.debug("FriendCard", username, email, bio, location);
 
   return (
     <div className="FriendCard card">

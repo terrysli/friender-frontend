@@ -44,8 +44,6 @@ function SignupForm({ signup }) {
     try {
       await signup(formData);
       const photoInput = document.getElementById("photo-input");
-
-      console.debug("photoInput:", photoInput);
       const file = photoInput.files[0];
       await uploadFile(file);
       navigate("/");
@@ -80,7 +78,7 @@ function SignupForm({ signup }) {
       const data = new FormData();
       data.append('file_from_react', file);
 
-      let response = await fetch('http://127.0.0.1:5000/url_route',
+      let response = await fetch('http://localhost:5000/url_route',
         {
           method: 'post',
           body: data,

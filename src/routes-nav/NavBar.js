@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import "./NavBar.css"
 import { Link, NavLink } from "react-router-dom";
 import UserContext from "../auth/UserContext";
 
@@ -12,9 +13,10 @@ import UserContext from "../auth/UserContext";
  */
 
 function NavBar() {
-  const { currentUser } = useContext(UserContext);
+  //const { currentUser } = useContext(UserContext);
+  const currentUser = {username: "test user"};
 
-  function loggedInNav({ logout }) {
+  function loggedInNav(logout) {
     return (
       <ul className="navbar-nav ms-auto">
         <li className="nav-item me-4">
@@ -67,7 +69,7 @@ function NavBar() {
     <nav className="Navigation navbar navbar-expand-md">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          Jobly
+          Friender
         </Link>
         {currentUser ? loggedInNav() : loggedOutNav()}
       </div>
