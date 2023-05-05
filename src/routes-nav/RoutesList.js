@@ -39,14 +39,13 @@ function RoutesList({ login, signup, currentUser, friends }) {
           </>
         }
 
-        <Route path="/" element={<Homepage currentUser={currentUser} friends={friends}/>} />
+        <Route path="/" element={<Homepage currentUser={currentUser} friends={friends} />} />
 
         {currentUser &&
           <>
-            <Route path="/friends" element={<FriendList friends={friends}/>} />
+            <Route path="/friends" element={<FriendList friends={friends} />} />
             <Route path="/messages" element={<MessageList />} />
-            <Route path="/profile" element={<ProfileForm currentUser={currentUser}/>} />
-            <Route path="/signup" element={<SignupForm />} />
+            <Route path="/profile" element={<ProfileForm currentUser={currentUser} />} />
           </>
         }
 
