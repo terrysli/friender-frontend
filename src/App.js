@@ -74,16 +74,13 @@ function App() {
 
   /** Handles site-wide logout */
   function logout() {
-    setCurrentUser({
-      infoLoaded: true,
-      data: null
-    });
+    setCurrentUser({});
     setToken(null);
   }
 
   return (
     <div className="App">
-      <NavBar logout={logout} />
+      <NavBar currentUser={currentUser} logout={logout} />
       <RoutesList signup={signup} login={login} currentUser={currentUser} friends={friends} />
     </div>
   );

@@ -12,11 +12,10 @@ import UserContext from "../auth/UserContext";
  * App -> NavBar
  */
 
-function NavBar() {
+function NavBar({ currentUser, logout }) {
   //const { currentUser } = useContext(UserContext);
-  const currentUser = {username: "test user"};
 
-  function loggedInNav(logout) {
+  function loggedInNav() {
     return (
       <ul className="navbar-nav ms-auto">
         <li className="nav-item me-4">
