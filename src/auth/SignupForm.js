@@ -63,9 +63,7 @@ function SignupForm({ signup }) {
     }));
   }
 
-  function handlePhotoChange(evt) {
 
-  }
 
   // function handleFiles(evt) {
   //   const fileList = this.files;

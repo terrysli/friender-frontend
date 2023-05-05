@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FrienderApi from "../api";
-import FriendCard from "../friend/FriendCard";
+import FriendCard from "../friends/FriendCard";
 
 /** Show list of FriendCards.
  *
@@ -12,8 +12,18 @@ import FriendCard from "../friend/FriendCard";
  * [RoutesList, NavBar] -> FriendList -> FriendCard
  */
 
-function FriendList(friends) {
+function FriendList() {
+  const [friends, setFriends] = useState([]);
   console.debug("FriendList", friends);
+
+  useEffect(function getFriendsOnMount() {
+    async function getFriends() {
+      const friendsResults = await FrienderApi.getFriendsOfUser("jdawg");
+      console.log("friendsResults:", friendsResults);
+      setFriends(friendsResults);
+    }
+    getFriends();
+  }, [])
 
   return (
     <div className="FriendList col-md-8 offset-md-2">
