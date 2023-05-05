@@ -12,6 +12,7 @@ function ProfileForm({ currentUser }) {
 
   console.debug(
     "ProfileForm",
+    currentUser,
     formErrors
   );
 
@@ -20,7 +21,7 @@ function ProfileForm({ currentUser }) {
     try {
       const photoInput = document.getElementById("photo-input");
       const file = photoInput.files[0];
-      await uploadFile(file);
+      await uploadFile(file, currentUser.username);
       navigate("/");
     } catch (err) {
       setFormErrors(err);
@@ -37,13 +38,13 @@ function ProfileForm({ currentUser }) {
   //   setFormErrors([]);
   // }
 
-  const uploadFile = async (file) => {
+  const uploadFile = async (file, username) => {
     console.log("uploadFile file:", file);
     if (file != null) {
       const data = new FormData();
       data.append('file_from_react', file);
 
-      let response = await fetch('http://localhost:5000/url_route',
+      let response = await fetch(`http://localhost:5000/url_route/${username}`,
         {
           method: 'post',
           body: data,

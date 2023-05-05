@@ -68,9 +68,7 @@ function NavBar() {
   return (
     <nav className="Navigation navbar navbar-expand-md">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          Friender
-        </Link>
+          <h1>Friender</h1>
         {currentUser ? loggedInNav() : loggedOutNav()}
       </div>
     </nav>

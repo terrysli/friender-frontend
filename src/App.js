@@ -20,15 +20,15 @@ import FrienderApi from "./api";
  */
 
 function App() {
-  const JDAWG = {
-    bio: "After environmental let stuff floor total member.",
-		email: "j@j.com",
-	  friend_radius: 10,
-		location: 48197,
-		photo: null,
-		username: "jdawg"
-  }
-  const [currentUser, setCurrentUser] = useState(JDAWG);
+  // const JDAWG = {
+  //   bio: "After environmental let stuff floor total member.",
+	// 	email: "j@j.com",
+	//   friend_radius: 10,
+	// 	location: 48197,
+	// 	photo: null,
+	// 	username: "jdawg"
+  // }
+  const [currentUser, setCurrentUser] = useState({});
   const [friends, setFriends] = useState([]);
   const [token, setToken] = useState("");
 
@@ -40,14 +40,23 @@ function App() {
     token
   );
 
-  useEffect(function getFriendsOnMount() {
+  useEffect(function getCurrentUserOnMount() {
+    async function getCurrentUser() {
+      const userResult = await FrienderApi.getUserData("jdawg");
+      console.log("userResults:", userResult);
+      setCurrentUser(userResult);
+    }
+    getCurrentUser();
+  }, [])
+
+  useEffect(function getFriendsOnCurrentUserChange() {
     async function getFriends() {
-      const friendsResults = await FrienderApi.getFriendsOfUser("jdawg");
+      const friendsResults = await FrienderApi.getFriendsOfUser(currentUser.username);
       console.log("friendsResults:", friendsResults);
       setFriends(friendsResults);
     }
     getFriends();
-  }, [])
+  }, [currentUser])
 
   /** Handles side-wide signup. */
   async function signup(signupData) {
@@ -75,7 +84,7 @@ function App() {
   return (
     <div className="App">
       <NavBar logout={logout} />
-      <RoutesList signup={signup} login={login} currentUser={JDAWG} friends={friends} />
+      <RoutesList signup={signup} login={login} currentUser={currentUser} friends={friends} />
     </div>
   );
 }

@@ -25,7 +25,7 @@ function Homepage({ currentUser, friends }) {
             <h3 className="mb-3">My Profile</h3>
             <br />
             <ul>
-              <li><img src="https://friender-rithm-terrysli.s3.us-east-2.amazonaws.com/profile_photos/jdawg_photo.jpeg" alt="profile pic"/></li>
+              <li><img width="300px" src={`https://friender-rithm-terrysli.s3.us-east-2.amazonaws.com/profile_photos/${currentUser.username}_photo.jpeg`} alt="profile pic" /></li>
               <li><b>Username: </b>{currentUser.username}</li>
               <li><b>Email: </b>{currentUser.email}</li>
               <li><b>Bio: </b>{currentUser.bio}</li>
@@ -35,6 +35,7 @@ function Homepage({ currentUser, friends }) {
           </div>
 
           <div className="col-md-6">
+            <hr></hr>
             <h3 className="mb-3">Friends</h3>
             {friends.length > 0
               ? <FriendList friends={friends} />
