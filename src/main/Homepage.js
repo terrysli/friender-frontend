@@ -13,8 +13,8 @@ import FrienderApi from "../api";
  *  - currentUser
  */
 
-// const BUCKET_URL = "https://friender-rithm-terrysli.s3.us-east-2.amazonaws.com"
-const BUCKET_URL = "https://friender-may-2023.s3.us-east-2.amazonaws.com"
+const BUCKET_URL = "https://friender-rithm-terrysli.s3.us-east-2.amazonaws.com"
+//const BUCKET_URL = "https://friender-may-2023.s3.us-east-2.amazonaws.com"
 
 function Homepage({ currentUser, friends }) {
   //const { currentUser } = useContext(UserContext);

@@ -1,0 +1,11 @@
+.FriendList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.FriendList-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

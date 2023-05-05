@@ -12,8 +12,8 @@ import "./FriendCard.css"
  * FriendList -> FriendCard
  */
 
-// const BUCKET_URL = "https://friender-rithm-terrysli.s3.us-east-2.amazonaws.com"
-const BUCKET_URL = "https://friender-may-2023.s3.us-east-2.amazonaws.com"
+const BUCKET_URL = "https://friender-rithm-terrysli.s3.us-east-2.amazonaws.com"
+//const BUCKET_URL = "https://friender-may-2023.s3.us-east-2.amazonaws.com"
 
 function FriendCard({ username, email, bio, photo, location }) {
   console.debug("FriendCard", username, email, bio, location);
