@@ -10,7 +10,9 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
 
 class FrienderApi {
 
-  static token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4MzI2ODY2NiwianRpIjoiZmQ0ZDZhMDUtM2Y5NC00YmUzLWFlNTYtYjIzYjkyNjhhYzYxIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImpkYXdnIiwibmJmIjoxNjgzMjY4NjY2LCJleHAiOjE2ODMyNjk1NjYsImlzX2FkbWluIjp0cnVlfQ.rhE18i83mLpO1Hok_pkeUU8iPyApkcZj6QO9FX438uk";
+  // TODO: This token expires after a few minutes! Must be refreshed for app to
+  // work as logged in user
+  static token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4MzI2OTcyMSwianRpIjoiZmYzNjY5YzMtZjdjMy00YTE0LThmZTMtNmI5NzRhYzE4ZjZmIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImpkYXdnIiwibmJmIjoxNjgzMjY5NzIxLCJleHAiOjE2ODMyNzA2MjEsImlzX2FkbWluIjp0cnVlfQ.YHIaqxzYDuA-d7mxhH9Wz3nWQ1JsoxN18bRCzhEgXss";
 
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
