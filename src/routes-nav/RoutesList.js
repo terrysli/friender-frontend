@@ -25,6 +25,7 @@ function RoutesList({ login, signup, currentUser, friends }) {
 
   console.debug(
     "Routes",
+    `currentUser=${currentUser}`,
     `login=${typeof login}`,
     `register=${typeof register}`,
   );
