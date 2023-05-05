@@ -12,13 +12,13 @@ import MessageCard from "../messages/MessageCard";
  * [RoutesList, NavBar] -> MessageList -> MessageCard
  */
 
-function MessageList() {
+function MessageList({ currentUser }) {
   const [messages, setFriends] = useState([]);
   console.debug("MessageList", messages);
 
   useEffect(function getMessagesOnMount() {
     async function getMessages() {
-      const messagesResults = await FrienderApi.getMessagesOfUser("jdawg");
+      const messagesResults = await FrienderApi.getMessagesOfUser(currentUser.username);
       console.log("friendsResults:", messagesResults);
       setFriends(messagesResults);
     }
