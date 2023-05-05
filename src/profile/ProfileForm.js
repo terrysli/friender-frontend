@@ -9,6 +9,7 @@ import axios from "axios";
 function ProfileForm({ currentUser }) {
   const navigate = useNavigate();
   const [formErrors, setFormErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   console.debug(
     "ProfileForm",
@@ -21,9 +22,9 @@ function ProfileForm({ currentUser }) {
     try {
       const photoInput = document.getElementById("photo-input");
       const file = photoInput.files[0];
-      uploadFile(file, currentUser.username);
+      await uploadFile(file, currentUser.username);
       navigate("/");
-      console.log("PROFILE FORM AFTER NAVIGATE")
+      console.log("PROFILE FORM AFTER NAVIGATE");
     } catch (err) {
       setFormErrors(err);
     }
@@ -42,6 +43,7 @@ function ProfileForm({ currentUser }) {
   const uploadFile = async (file, username) => {
     console.log("uploadFile file:", file);
     if (file != null) {
+      setIsLoading(true);
       const data = new FormData();
       data.append('file_from_react', file);
 
@@ -49,39 +51,41 @@ function ProfileForm({ currentUser }) {
         {
           method: 'post',
           body: data,
-          mode:'no-cors'
+          mode: 'no-cors'
         }
       );
-      let res = await response.json();
-      console.debug("res", res);
-      if (res.status !== 1) {
-        alert('Error uploading file');
-      }
-    }
-    return
+      console.log("UPLOAD FILE AFTER RESPONSE")
+      console.debug("res", response);
+      // if (response.status !== 1) {
+      //   alert('Error uploading file');
+      // }
+      setIsLoading(false)
+      return;
+    };
+  }
+
+    return (
+      <div className="ProfileForm">
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="photo-input" className="form-label">Choose a profile picture:</label>
+            <input
+              id="photo-input"
+              type="file"
+              name="photo"
+              accept="image/png, image/jpeg, image/jpg"
+              className="form-control"
+            />
+          </div>
+          {isLoading && <p>Your photo is being uploaded...</p>}
+          <div className="d-grid">
+            <button className="btn btn-primary" onClick={handleSubmit}>
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    );
   };
 
-  return (
-    <div className="ProfileForm">
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="photo-input" className="form-label">Choose a profile picture:</label>
-          <input
-            id="photo-input"
-            type="file"
-            name="photo"
-            accept="image/png, image/jpeg, image/jpg"
-            className="form-control"
-          />
-        </div>
-        <div className="d-grid">
-          <button className="btn btn-primary" onClick={handleSubmit}>
-            Submit
-          </button>
-        </div>
-      </form>
-    </div>
-  );
-}
-
-export default ProfileForm;
+  export default ProfileForm;
